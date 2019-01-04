@@ -144,9 +144,7 @@ class NormalCursorWrapper(object):
             params = {
                 "vendor": vendor,
                 "alias": alias,
-                "sql": self.db.ops.last_executed_query(
-                    self.cursor, sql, self._quote_params(params)
-                ),
+                "sql": sql % (params),
                 "duration": duration,
                 "raw_sql": sql,
                 "params": _params,
