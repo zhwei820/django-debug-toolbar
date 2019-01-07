@@ -143,7 +143,7 @@ class NormalCursorWrapper(object):
 
             def get_sql(sql, params):
                 try:
-                    return sql % (params),
+                    return sql % (params)
                 except Exception as e:
                     return sql
             params = {
