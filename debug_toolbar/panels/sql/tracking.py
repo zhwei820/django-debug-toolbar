@@ -141,10 +141,15 @@ class NormalCursorWrapper(object):
             conn = self.db.connection
             vendor = getattr(conn, "vendor", "unknown")
 
+            def get_sql(sql, params):
+                try:
+                    return sql % (params),
+                except Exception as e:
+                    return sql
             params = {
                 "vendor": vendor,
                 "alias": alias,
-                "sql": sql % (params),
+                "sql": get_sql(sql, params),
                 "duration": duration,
                 "raw_sql": sql,
                 "params": _params,
